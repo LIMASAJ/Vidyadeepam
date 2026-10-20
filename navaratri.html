@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navaratri & Devi Darshan — Sacred Knowledge Archive</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Auspicious Temple Colors: Turmeric Yellow, Saffron Orange, Tulsi Green */
+    --turmeric-yellow: #f5b027;
+    --turmeric-soft: #fff9e6;
+    --saffron-orange: #d9531e;
+    --marigold-deep: #b33908;
+    --saffron-soft: #fdf2ec;
+    --tulsi-green: #25663b;
+    --tulsi-light: #eaf5ee;
+    --tulsi-border: #9ec8ab;
+    --temple-red: #6e171b;
+    --bg-page: #fbf8f1;
+    --bg-card: #ffffff;
+    --border-color: #e5d8be;
+    --text-main: #2b1f1d;
+    --text-muted: #5e504c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; }
+  .cinzel { font-family: 'Cinzel', serif; }
+
+  /* TEMPLE TOP BANNER */
+  header {
+    background: linear-gradient(90deg, #b33908 0%, #d9531e 35%, #25663b 100%);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border-bottom: 3px solid var(--turmeric-yellow);
+  }
+  .back-link {
+    color: #fff8db;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: transform 0.2s ease;
+  }
+  .back-link:hover { transform: translateX(-3px); color: #fff; }
+  .header-tag {
+    font-size: 0.82rem;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1180px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 220px 1fr 310px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* TABLE OF CONTENTS */
+  .toc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--tulsi-green);
+    border-radius: 8px;
+    padding: 1.2rem;
+    position: sticky;
+    top: 1.5rem;
+    font-size: 0.88rem;
+    box-shadow: 0 4px 12px rgba(37, 102, 59, 0.06);
+  }
+  .toc-card h3 {
+    color: var(--tulsi-green);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.4rem;
+  }
+  .toc-card ul { list-style: none; }
+  .toc-card li { margin-bottom: 0.5rem; }
+  .toc-card a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .toc-card a:hover { color: var(--saffron-orange); font-weight: 500; }
+
+  /* ARTICLE */
+  article {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .article-title {
+    font-size: 2.8rem;
+    color: var(--marigold-deep);
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+  .sanskrit-sub {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: var(--tulsi-green);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  p { margin-bottom: 1.2rem; }
+  h2 {
+    font-size: 1.85rem;
+    color: var(--marigold-deep);
+    border-bottom: 2px solid var(--turmeric-yellow);
+    padding-bottom: 0.35rem;
+    margin-top: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* DEVI SACRED ICON CARDS (YELLOW, ORANGE, GREEN) */
+  .devi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin: 1.8rem 0;
+  }
+  .devi-card {
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+    border: 1px solid;
+    transition: transform 0.25s ease;
+  }
+  .devi-card:hover { transform: translateY(-3px); }
+  .devi-card.durga {
+    background: var(--saffron-soft);
+    border-color: #f0a688;
+  }
+  .devi-card.durga h4 { color: var(--saffron-orange); }
+  .devi-card.lakshmi {
+    background: var(--turmeric-soft);
+    border-color: #f7d17e;
+  }
+  .devi-card.lakshmi h4 { color: #b37400; }
+  .devi-card.saraswati {
+    background: var(--tulsi-light);
+    border-color: var(--tulsi-border);
+  }
+  .devi-card.saraswati h4 { color: var(--tulsi-green); }
+  
+  .devi-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 0.7rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    font-size: 1.8rem;
+  }
+  .devi-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 0.3rem; }
+  .devi-card p { font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted); line-height: 1.45; }
+
+  /* TEMPLE NOTICE BANNER */
+  .temple-box {
+    background: linear-gradient(135deg, var(--turmeric-soft) 0%, var(--saffron-soft) 100%);
+    border-left: 5px solid var(--saffron-orange);
+    border-right: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.1rem 1.4rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0;
+    font-size: 0.94rem;
+    color: #4a2810;
+  }
+
+  /* COLOR SYMBOLISM CALLOUT */
+  .color-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    font-size: 0.85rem;
+  }
+  .color-pill {
+    padding: 0.65rem 0.8rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+  }
+  .pill-yellow { background: var(--turmeric-soft); border: 1px solid #ebd08d; color: #855600; }
+  .pill-orange { background: var(--saffron-soft); border: 1px solid #f3b9a1; color: var(--saffron-orange); }
+  .pill-green { background: var(--tulsi-light); border: 1px solid var(--tulsi-border); color: var(--tulsi-green); }
+
+  /* TABLE */
+  .wiki-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+  .wiki-table th, .wiki-table td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+  }
+  .wiki-table th {
+    background: var(--tulsi-light);
+    color: var(--tulsi-green);
+    font-weight: 600;
+  }
+  .wiki-table tr:nth-child(even) { background: #faf6ed; }
+
+  /* WIKIPEDIA INFOBOX (RIGHT SIDE) */
+  .infobox {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-top: 5px solid var(--saffron-orange);
+    border-radius: 8px;
+    font-size: 0.86rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .infobox-header {
+    background: linear-gradient(135deg, var(--saffron-orange), var(--marigold-deep));
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+  .infobox-image {
+    text-align: center;
+    padding: 1.2rem 1rem;
+    background: radial-gradient(circle, var(--turmeric-soft) 0%, #fff 75%);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .devi-portrait-svg {
+    filter: drop-shadow(0 4px 10px rgba(217, 83, 30, 0.25));
+  }
+  .infobox-caption {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 0.4rem;
+  }
+  .infobox table { width: 100%; border-collapse: collapse; }
+  .infobox th, .infobox td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+  }
+  .infobox th { color: var(--text-muted); width: 38%; }
+
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    border-top: 1px solid var(--border-color);
+    background: #f4eee1;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 960px) {
+    .container { grid-template-columns: 1fr; }
+    .toc-card { position: static; }
+    .infobox { order: -1; max-width: 440px; margin: 0 auto 1.5rem; }
+    .devi-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR: RETURN TO MAIN ALTAR -->
+<header>
+  <a href="index.html" class="back-link">
+    <span>🪔</span> ← Back to Sacred Altar
+  </a>
+  <span class="header-tag">Navaratri &amp; Vidyarambham Encyclopedia</span>
+</header>
+
+<div class="container">
+
+  <!-- LEFT: TABLE OF CONTENTS -->
+  <aside class="toc-card" aria-label="Table of contents">
+    <h3>Contents</h3>
+    <ul>
+      <li><a href="#intro">1. Overview</a></li>
+      <li><a href="#tridevi">2. The Tridevi Manifestation</a></li>
+      <li><a href="#sacred-colors">3. Sacred Temple Colors</a></li>
+      <li><a href="#navadurga">4. The Navadurga (9 Forms)</a></li>
+      <li><a href="#vidyarambham">5. Saraswati &amp; Vidyarambham</a></li>
+      <li><a href="#wiki-links">6. Wikipedia References</a></li>
+    </ul>
+  </aside>
+
+  <!-- CENTER: MAIN ARTICLE TEXT -->
+  <article>
+    <h1 class="article-title" id="intro">Navaratri</h1>
+    <span class="sanskrit-sub">नवरात्रि · The Nine Nights of Divine Grace</span>
+
+    <p>
+      <strong>Navaratri</strong> (Sanskrit: <em>Navarātri</em>, "nine nights") is one of the most sacred festivals of the Hindu tradition, celebrating the supreme feminine power (<strong>Shakti</strong>) that sustains learning, virtue, and creation.
+    </p>
+
+    <!-- SACRED TRIDEVI CARDS (DURGA, LAKSHMI, SARASWATI) -->
+    <div class="devi-grid" id="tridevi">
+      <div class="devi-card durga">
+        <div class="devi-icon">🔱</div>
+        <h4>Maha Durga</h4>
+        <p><strong>Days 1–3:</strong> Pure Courage &amp; Cleansing. Dispels inertia, doubts, and inner obstacles.</p>
+      </div>
+      <div class="devi-card lakshmi">
+        <div class="devi-icon">🪷</div>
+        <h4>Maha Lakshmi</h4>
+        <p><strong>Days 4–6:</strong> Nobility &amp; Spiritual Wealth. Nurtures patience, clarity, and inner contentment.</p>
+      </div>
+      <div class="devi-card saraswati">
+        <div class="devi-icon">🪕</div>
+        <h4>Maha Saraswati</h4>
+        <p><strong>Days 7–9:</strong> Wisdom &amp; Illumination. Awakening the intellect, arts, books, and Vidya.</p>
+      </div>
+    </div>
+
+    <div class="temple-box">
+      <strong>Sacred Temple Custom:</strong> Across Indian sanctums, the final days culminate in <em>Durgashtami</em> (Pooja Vaypu), <em>Mahanavami</em> (Ayudha Pooja), and <em>Vijayadashami</em> (Vidyarambham)—where books and instruments are placed before Goddess Saraswati to invoke true wisdom.
+    </div>
+
+    <!-- TEMPLE SACRED COLOR SYMBOLISM -->
+    <h2 id="sacred-colors">Temple Colors &amp; Their Spiritual Meanings</h2>
+    <p>
+      Traditional altar aesthetics embody specific cosmic energies through their colors:
+    </p>
+    <div class="color-bar">
+      <div class="color-pill pill-yellow">
+        <span>🟡</span>
+        <div><strong>Turmeric (Haridra):</strong> Knowledge, auspicious beginnings, and inner purity.</div>
+      </div>
+      <div class="color-pill pill-orange">
+        <span>🟠</span>
+        <div><strong>Saffron (Keshara):</strong> Renunciation, devotion, fire of deep concentration.</div>
+      </div>
+      <div class="color-pill pill-green">
+        <span>🟢</span>
+        <div><strong>Tulsi Green:</strong> Life, nature, eternal youth, and sacred reverence.</div>
+      </div>
+    </div>
+
+    <!-- THE NINE FORMS (NAVADURGA) TABLE -->
+    <h2 id="navadurga">The Navadurga (The 9 Sacred Manifestations)</h2>
+    <p>
+      The <em>Devi Mahatmya</em> details the nine forms worshipped sequentially through the nine nights:
+    </p>
+
+    <table class="wiki-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Form of Devi</th>
+          <th>Spiritual Significance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Day 1</strong></td>
+          <td><strong>Shailaputri</strong></td>
+          <td>Daughter of Himalaya; rooted firmness in purpose and nature.</td>
+        </tr>
+        <tr>
+          <td><strong>Day 2</strong></td>
+          <td><strong>Brahmacharini</strong></td>
+          <td>The student of the Vedas; penance, solitude, and unwavering study.</td>
+        </tr>
+        <tr>
+          <td><strong>Day 3</strong></td>
+          <td><strong>Chandraghanta</strong></td>
+          <td>Crescent moon bell; serenity and courage in the face of disturbance.</td>
+        </tr>
+        <tr>
+          <td><strong>Day 4</strong></td>
+          <td><strong>Kushmanda</strong></td>
+          <td>Radiant cosmic womb; creative vitality and vitality of the cosmos.</td>
+        </tr>
+        <tr>
+          <td><strong>Day 5</strong></td>
+          <td><strong>Skandamata</strong></td>
+          <td>Mother of Kartikeya; gentle maternal guardianship of learners.</td>
+        </tr>
+        <tr>
+          <td><strong>Day 6</strong></td>
+          <td><strong>Katyayani</strong></td>
+          <td>Fierce protector of truth; victory of righteousness over falsehood.</td>
+        </tr>
+        <tr>
+          <td><strong>Day 7</strong></td>
+          <td><strong>Kalaratri</strong></td>
+          <td>Dark night of transcendence; eradicates deepest fears and ignorance.</td>
+        </tr>
+        <tr>
+          <td><strong>Day 8</strong></td>
+          <td><strong>Mahagauri</strong></td>
+          <td>Pure compassion; bestower of peace, forgiveness, and healing.</td>
+        </tr>
+        <tr>
+          <td><strong>Day 9</strong></td>
+          <td><strong>Siddhidatri</strong></td>
+          <td>Bestower of Siddhis; realization of supreme knowledge and insight.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- VIDYARAMBHAM SECTION -->
+    <h2 id="vidyarambham">Saraswati Pooja &amp; Vidyarambham Rites</h2>
+    <p>
+      In South India, particularly Kerala, Karnataka, and Tamil Nadu, the festival is intimately connected with scholarship:
+    </p>
+    <ul>
+      <li style="margin-bottom: 0.5rem;">
+        <strong>Pooja Vaypu (Durgashtami evening):</strong> Books, notebooks, pencils, and vocational tools are reverently placed at the feet of Goddess Saraswati or the temple sanctum.
+      </li>
+      <li style="margin-bottom: 0.5rem;">
+        <strong>The Sacred Fast of Study:</strong> During Mahanavami, no reading or secular work is done, turning the mind toward inward reflection and gratitude.
+      </li>
+      <li>
+        <strong>Pooja Eduppu &amp; Vidyarambham (Vijayadashami morning):</strong> Books are blessed and received back. Young children write their first sacred syllables (<em>Hari Sri Ganapataye Namah</em>) in plates of unhusked rice or river sand.
+      </li>
+    </ul>
+
+    <!-- WIKIPEDIA LINKS SECTION -->
+    <h2 id="wiki-links">See Also (Wikipedia References)</h2>
+    <p>Explore comprehensive scholarly articles and background histories on Wikipedia:</p>
+    <ul>
+      <li style="margin-bottom: 0.4rem;">
+        <a href="https://en.wikipedia.org/wiki/Navaratri" target="_blank" rel="noopener noreferrer" style="color: var(--marigold-deep); font-weight: 600;">
+          Navaratri — Comprehensive Cultural Overview ↗
+        </a>
+      </li>
+      <li style="margin-bottom: 0.4rem;">
+        <a href="https://en.wikipedia.org/wiki/Vidyarambham" target="_blank" rel="noopener noreferrer" style="color: var(--marigold-deep); font-weight: 600;">
+          Vidyarambham &amp; Saraswati Pooja Traditions ↗
+        </a>
+      </li>
+      <li style="margin-bottom: 0.4rem;">
+        <a href="https://en.wikipedia.org/wiki/Navadurga" target="_blank" rel="noopener noreferrer" style="color: var(--marigold-deep); font-weight: 600;">
+          Navadurga — The Nine Manifestations of Devi ↗
+        </a>
+      </li>
+      <li>
+        <a href="https://en.wikipedia.org/wiki/Saraswati" target="_blank" rel="noopener noreferrer" style="color: var(--marigold-deep); font-weight: 600;">
+          Goddess Saraswati — Deity of Knowledge and Arts ↗
+        </a>
+      </li>
+    </ul>
+  </article>
+
+  <!-- RIGHT: WIKIPEDIA INFOBOX WITH DEVI ICON -->
+  <aside class="infobox" aria-label="Quick facts">
+    <div class="infobox-header">Navaratri · नवरात्रि</div>
+    
+    <div class="infobox-image">
+      <!-- Symbolic Sacred Diya & Lotus Artwork -->
+      <svg class="devi-portrait-svg" viewBox="0 0 160 140" width="160" height="140" role="img" aria-label="Devi Sacred Lotus and Flame">
+        <defs>
+          <radialGradient id="haloGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fff2a3" stop-opacity="1"/>
+            <stop offset="70%" stop-color="#f5b027" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#f5b027" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="80" cy="65" r="50" fill="url(#haloGlow)"/>
+        <!-- Lotus Petals (Green & Orange) -->
+        <path d="M80 85 C65 105 45 105 38 90 C50 85 70 85 80 85 Z" fill="#25663b"/>
+        <path d="M80 85 C95 105 115 105 122 90 C110 85 90 85 80 85 Z" fill="#25663b"/>
+        <path d="M80 80 C60 65 50 40 80 20 C110 40 100 65 80 80 Z" fill="#d9531e"/>
+        <!-- Divine Golden Diya -->
+        <path d="M50 95 Q80 115 110 95 Q95 85 65 85 Z" fill="#b37400" stroke="#f5b027" stroke-width="1.5"/>
+        <ellipse cx="80" cy="92" rx="28" ry="6" fill="#f5b027"/>
+        <!-- Sacred Flame -->
+        <path d="M80 55 C88 72 86 85 80 90 C74 85 72 72 80 55 Z" fill="#fff5a6" stroke="#ff7b2b" stroke-width="1.5"/>
+        <circle cx="80" cy="72" r="3" fill="#ff4d00"/>
+      </svg>
+      <div class="infobox-caption">Auspicious Lotus &amp; Sacred Jyoti of Devi</div>
+    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <th>Official Name</th>
+          <td>Sharada Navaratri</td>
+        </tr>
+        <tr>
+          <th>Devanagari</th>
+          <td>शारदा नवरात्रि</td>
+        </tr>
+        <tr>
+          <th>Presiding Deity</th>
+          <td><strong>Durga, Lakshmi, Saraswati</strong></td>
+        </tr>
+        <tr>
+          <th>Duration</th>
+          <td>9 nights, 10 days</td>
+        </tr>
+        <tr>
+          <th>Lunar Month</th>
+          <td>Ashvin (Shukla Paksha)</td>
+        </tr>
+        <tr>
+          <th>Sacred Colors</th>
+          <td>
+            <span style="color: #b37400; font-weight: 600;">Turmeric Yellow</span>, 
+            <span style="color: var(--saffron-orange); font-weight: 600;">Saffron</span>, 
+            <span style="color: var(--tulsi-green); font-weight: 600;">Tulsi Green</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Key Rituals</th>
+          <td>Nilavilakku lighting, Pooja Vaypu, Vidyarambham</td>
+        </tr>
+        <tr>
+          <th>Final Day</th>
+          <td>Vijayadashami (Dussehra)</td>
+        </tr>
+      </tbody>
+    </table>
+  </aside>
+
+</div>
+
+<footer>
+  <p>© VidyaDeepam Knowledge Initiative · Dedicated to traditional scholarship and Saraswati Pooja</p>
+</footer>
+
+</body>
+</html>
