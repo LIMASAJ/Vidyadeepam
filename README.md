@@ -1,6 +1,12 @@
 # Vidyadeepam
 🪔 VidyaDeepam (വിദ്യാദീപം) — A digital altar honoring Saraswati Pooja &amp; Pooja Vaypu. Reverently pause your studies, light the temple Nilavilakku, and seal your learning materials until Vidyarambham dawn.
 
+## The Inspiration:
+In an increasingly digital world, students who study from PDFs, eBooks, and digital notes miss out on the sacred tradition of Pooja Vaypu (പൂജവെയ്പ്പ്) because they cannot physically place their learning materials at the altar. VidyaDeepam was created to bridge this gap—providing a dedicated, mindful virtual sanctuary where modern digital learners can offer, seal, and bless their digital study materials for Navaratri.
+
+### Why VidyaDeepam?
+Created for students who rely on digital notes, PDFs, and devices and cannot physically place them for Pooja Vaypu, allowing them to participate in this sacred tradition through a mindful virtual offering.
+
 > **A Sacred Digital Sanctuary for Navaratri, Pooja Vaypu (പൂജവെയ്പ്പ്), and Vidyarambham (വിദ്യാരംഭം)**
 
 ## 📖 Overview
